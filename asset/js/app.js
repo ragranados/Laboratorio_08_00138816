@@ -35,22 +35,29 @@ formulario.addEventListener("submit", (evt) => {
                             se produsca el evento*/
 
 
-        let bitacora = {
-            cant: cont,
-            fecha: formulario[1].value,
-            descripcion: formulario[2].value,
-            cantidad: formulario[3].value
-            /* contiene los elementos del formulario que aportan datos  */
-        }
+    let bitacora = {
+        cant: cont,
+        fecha: formulario[1].value,
+        descripcion: formulario[2].value,
+        cantidad: formulario[3].value
+        /* contiene los elementos del formulario que aportan datos  */
+    }
 
-        if (bitacora.fecha == "") {
-            console.log("vacio");
-        }
-
+    if (bitacora.descripcion == "" || bitacora.fecha == "" || bitacora.cantidad == "") {
+        formulario[1].style.border = "1px solid red";
+        formulario[2].style.border = "1px solid red";
+        formulario[3].style.border = "1px solid red";
+    } else {
+        formulario[1].style.border = "1px solid green";
+        formulario[2].style.border = "1px solid green";
+        formulario[3].style.border = "1px solid green";
         bitacoras.push(bitacora);
         cont++;
         mostrar();
-    
+    }
+
+
+
 });
 
 console.log(Object.values(bitacora));
@@ -75,9 +82,8 @@ const crearElemento = (bitacora, tbody) => {
 }
 
 const eliminar = (tbody) => {
-    console.log("edfsdf,");
+
     while (tbody.firstChild) {
-        console.log("dsbkjdsbf");
         tbody.removeChild(tbody.firstChild);
     }
     /*Devuelve el primer hijo del nodo que se ha seleccionado
